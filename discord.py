@@ -1,4 +1,7 @@
-# Enter Discord Webhook here
+import requests
+from time import sleep
+
+# Enter Discord webhook Url here
 
 webhook = "" 
 
@@ -13,7 +16,6 @@ if webhook == '':
     print(ERROR+"Webhook empty\nAdd Discord Webhook in ./discord.py")
     exit()
 
-import requests
 
 def SendDisc(imgs):
     try:
@@ -22,6 +24,7 @@ def SendDisc(imgs):
             try:
                 r = requests.post(webhook, json=payload )
                 print(i,'Status code:',r.status_code)
+                sleep(0.5)
             except:
                 print(ERROR+"Getting Image, Status code:",r.status_code)
     except Exception as e:

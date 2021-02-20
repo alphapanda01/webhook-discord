@@ -1,5 +1,11 @@
 from scrape.api import gelapi
 
+# Add your gelbooru api
+
+api_key = 'anonymous'
+user_id = '9455'
+
+
 # Convert the input text into Api Format
 def gelbooru(limit,tags):
     
@@ -10,8 +16,8 @@ def gelbooru(limit,tags):
     tags = "+".join(tags) + '+sort:random+-' + "+-".join(blacklisted)
 
     payload = {
-        "api_key":"anonymous",
-        "user_id":"9455",
+        "api_key": api_key,
+        "user_id": user_id,
         "page":"dapi",
         "s":"post",
         "q":"index",

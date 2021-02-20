@@ -7,7 +7,7 @@
 - add discord webhook in ./discord.py
 - optional:
   - Edit Default tags in scrape/{gelbooru.py|konachan.py|rule34.py}
-
+  - Add your api in `scrape/gelbooru.py` - Currently using anonymous account
 
 
 
