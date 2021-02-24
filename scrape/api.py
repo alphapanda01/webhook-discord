@@ -7,7 +7,12 @@ def gelapi(url,payload,limit):
     # Fixed unwanted URI encoding for tags
 
     # gets images from api
-    r = requests.get(url,params=payload_str)
+    try:
+        r = requests.get(url,params=payload_str)
+    except:
+        print("Error Occured, Unable to retrive data\nTry a Different tag combiantion or Wait for sometime before trying")
+        exit()
+
     
     if r.status_code != 200:
         print("Unable to Reach Website, Try again later")
@@ -19,7 +24,7 @@ def gelapi(url,payload,limit):
     try:
         jsonData = r.json()
     except:
-        print("Error Occured, Unable to retrive data")
+        print("Error Occured, Unable to retrive data\nTry a Different tag combiantion")
         exit()
 
     if len(jsonData) < 1:

@@ -4,7 +4,7 @@ from random import randint
 
 def rule34(limit,tags):
 
-    rand = 'score:>='+str(randint(0,1000)) # To get random images with help of score
+    rand = 'score:>='+str(randint(0,200)) # To get random images with help of score
 
     tags = tags.split(',')
     
