@@ -3,7 +3,7 @@ from time import sleep
 
 # Enter Discord webhook Url here
 
-webhook = "" 
+webhook = ""
 
 # Colors
 
@@ -17,15 +17,25 @@ if webhook == '':
     exit()
 
 
-def SendDisc(imgs):
+def SendDisc(imgs,ver):
+    sent = 0
+    failed = 0
     try:
         for i in imgs:
             payload = { 'content' : i } 
             try:
                 r = requests.post(webhook, json=payload )
-                print(i,'Status code:',r.status_code)
+                if r.status_code == 204:
+                    sent += 1
+                else:
+                    failed += 1
+                if ver == True:
+                    print(i,'Status code:',r.status_code)
+                print(f"Sent: {sent}, Failed: {failed}\r",end="")
                 sleep(0.5)
             except:
                 print(ERROR+"Getting Image, Status code:",r.status_code)
     except Exception as e:
         print(ERROR+e.__class__)
+    # To print the final send and failed values
+    print(f"Sent: {sent}, Failed: {failed}")

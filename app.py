@@ -14,9 +14,10 @@ if __name__=="__main__":
         parser.add_argument('--site','-s',type=str,metavar='',help="Sites : gelbooru[default],rule34,konachan")
         parser.add_argument('--tags','-t',type=str,metavar='',required=True,help="tag(comma seperated): '1girl,1boy'")
         parser.add_argument('--count','-c',type=int,metavar='',required=True,help="count: Images to scrape")
-
+        parser.add_argument('--verbose','-v',action='store_true',help='Increasese verbosity level')
+        
         args = parser.parse_args()  # Gets Args
-       
+        
         if args.site == "konachan":
             imgs = konachan(args.count,args.tags) # Gets Images
         elif args.site == 'rule34':
@@ -25,6 +26,6 @@ if __name__=="__main__":
             imgs = gelbooru(args.count,args.tags) # Gets Images
 
         
-        SendDisc(imgs)  # Sends Images
+        SendDisc(imgs,args.verbose)  # Sends Images
 
 
